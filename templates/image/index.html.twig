@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="image">
+            <img src="/{{ image.src }}">
+        </div>
+        <div class="row">
+
+
+
+            <div class="col-4 m-5">
+                <label> Share Link </label>
+                <input type="text" class="form-control"
+                       value="http://image-web.localhost{{ path('view_public_image', { 'image': image.id }) }}">
+            </div>
+
+
+            <div class="col-2 m-5">
+                <br>
+                <a href="{{ path('image_delete', { 'image': image.id }) }}">
+                    <button class="btn btn-danger btn-sm" type="button"><i class="fas fa-trash-alt"></i> Delete Image
+                    </button>
+                </a>
+            </div>
+
+
+        </div>
+    </div>
+
+{% endblock %}

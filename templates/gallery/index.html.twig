@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gallery{% endblock %}
+
+{% block body %}
+
+
+    <div class="container menu-space">
+        <form class="row g-10 m-5" name="image_form" method="post" enctype="multipart/form-data">
+            <div class="col-auto">
+                <input class="form-control" type="file" id="image_form_image" name="image_form[image]">
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-primary mb-3">Upload Image</button>
+                <input type="hidden" id="image_form__token" name="image_form[_token]"
+                       value="LN9DLpeNqeJ1oDbm23tQq73pm4sRjksQWvcfUozU4Hg">
+            </div>
+        </form>
+
+
+    <div class="row">
+        {% for image in images %}
+            <div class="col-2">
+                <img class="image-small img-thumbnail" src="{{ image.src }}">
+                <div class="float-end m-1">
+                    <a href="{{ path('image_index', { 'image': image.id }) }}"><button class="btn btn-success btn-sm" type="button"><i class="fas fa-eye"></i></button></a>
+                    <a href="{{ path('image_delete', { 'image': image.id }) }}"><button class="btn btn-danger btn-sm" type="button"><i class="fas fa-trash-alt"></i></button></a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+
+    </div>
+{% endblock %}

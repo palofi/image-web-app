@@ -1,0 +1,29 @@
+{% extends 'publicBase.html.twig' %}
+
+{% block title %}Registration{% endblock %}
+
+{% block body %}
+    <div class="panel">
+        <h2>Create User</h2>
+        <form name="registration_form" method="POST">
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Email address</label>
+                <input type="email" class="form-control" name="email" placeholder="name@example.com">
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Password</label>
+                <input type="password" class="form-control"  name="password" placeholder="password">
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Repeat password</label>
+                <input type="password" class="form-control" name="confirm_password" placeholder="password">
+            </div>
+            <div class="mb-3">
+                <button class="btn btn-primary float-end" type="submit">Save</button>
+            </div>
+        </form>
+    </div>
+
+
+
+{% endblock %}

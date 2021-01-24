@@ -1,0 +1,52 @@
+version: '3'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: docker/web/Dockerfile
+    depends_on:
+      - php
+      - database
+    ports:
+      - "80:80"
+    volumes:
+      - .:/var/www
+    networks:
+      - default
+
+  php:
+    build:
+      context: .
+      dockerfile: docker/php/Dockerfile
+    environment:
+      - "PHP_IDE_CONFIG=serverName=image-web.localhost"
+    volumes:
+      - .:/var/www
+    networks:
+      - default
+
+  database:
+    image: mariadb:10.2
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: mydatabase
+    volumes:
+      - database:/var/lib/mysql
+    networks:
+      - default
+
+  adminer:
+    image: adminer
+    ports:
+      - "8080:8080"
+    networks:
+      - default
+
+
+networks:
+  default:
+    driver: bridge
+
+volumes:
+  database:

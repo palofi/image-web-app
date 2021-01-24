@@ -1,0 +1,31 @@
+{% extends 'publicBase.html.twig' %}
+
+{% block title %}Login{% endblock %}
+
+
+{% block body %}
+
+<div class="panel">
+    <h2>Login</h2>
+    <form class="form-signin" action="{{ path('app_login') }}" method="post">
+        <input type="hidden" name="_csrf_token"
+               value="{{ csrf_token('authenticate') }}">
+        <div class="mb-3">
+            <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email address"
+                   value="" required autofocus>
+        </div>
+        <div class="mb-3">
+            <label for="inputPassword" class="sr-only">Password</label>
+            <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
+        </div>
+        <div class="mb-3">
+            <button class="btn btn-primary float-end" type="submit">Login</button>
+        </div>
+    </form>
+</div>
+
+
+
+{#    #}
+
+{% endblock %}
